@@ -10,18 +10,20 @@ Este projeto é uma demonstração prática de **RAG (Retrieval-Augmented Genera
 - **Embeddings com Cohere**
 - **Armazenamento vetorial com Pinecone**
 - **LLM da Groq para responder perguntas**
+- **Interface interativa com Streamlit**
 
 > 📚 Você envia um PDF → Ele é dividido em partes → Embeddings são gerados → Consultas são feitas com inteligência contextual.
 
 ---
 
-## 💠 Tecnologias Usadas
+## 🛠️ Tecnologias Usadas
 
 - 🧱 **LangChain**
 - 🧠 **Cohere API (embeddings)**
 - 📦 **Pinecone (vector store)**
 - 🤖 **Groq (LLM via LangChain)**
 - 🌿 **dotenv (variáveis de ambiente)**
+- 🧪 **Streamlit (interface web)**
 - 🐍 **Python 3.10+**
 
 ---
@@ -30,10 +32,11 @@ Este projeto é uma demonstração prática de **RAG (Retrieval-Augmented Genera
 
 ```
 📁 raiz/
-👥│
-📂 data/
+├── data/
 │   └── 2210.03629v3.pdf        # PDF usado para a demo
-├── main.py                     # Script principal
+├── temp/                       # Armazenamento temporário para uploads
+├── main.py                     # Script principal (modo terminal)
+├── app.py                      # Interface web com Streamlit
 ├── .env                        # Suas chaves (NÃO suba isso pro Git)
 └── requirements.txt            # Dependências
 ```
@@ -74,8 +77,10 @@ GROQ_API_KEY=your-groq-api-key
 
 ## 🚀 Como Rodar
 
+### Modo Terminal
+
 1. Adicione um PDF na pasta `data/`.
-2. Altere o caminho do arquivo no script, se necessário:
+2. Altere o caminho do arquivo em `main.py`, se necessário:
 
 ```python
 PATH_FILE = "data\\2210.03629v3.pdf"
@@ -86,6 +91,18 @@ PATH_FILE = "data\\2210.03629v3.pdf"
 ```bash
 python main.py
 ```
+
+### Modo Web (Interface com Streamlit)
+
+1. Execute:
+
+```bash
+streamlit run app.py
+```
+
+2. Acesse [http://localhost:8501](http://localhost:8501) no navegador.
+
+3. Faça upload de um PDF e digite uma pergunta.
 
 ---
 
@@ -101,7 +118,7 @@ python main.py
 
 ---
 
-## 🧪 Exemplo de Execução
+## 🧪 Exemplo de Execução (Terminal)
 
 ```bash
 Carregando os documentos ...
@@ -115,15 +132,15 @@ A large language model (LLM) is an advanced AI model trained on vast text data..
 
 ---
 
-## 🛠️ Customizações
+## ⚙️ Customizações
 
-Quer mudar a pergunta?
+Quer mudar a pergunta no modo terminal?
 
 ```python
 res = qa.invoke({"input": "what is a llm?"})
 ```
 
-Quer trocar o PDF? É só substituir o arquivo na pasta `data/`.
+Quer trocar o PDF? É só substituir o arquivo na pasta `data/` ou fazer upload na interface web.
 
 ---
 
